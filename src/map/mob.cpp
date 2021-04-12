@@ -6031,12 +6031,14 @@ static void mob_drop_ratio_adjust(void){
 						ratemin = battle_config.item_drop_use_min;
 						ratemax = battle_config.item_drop_use_max;
 						break;
-					case IT_WEAPON:
-					case IT_ARMOR:
-					case IT_PETARMOR:
+						case IT_WEAPON:
+						case IT_ARMOR:
+						case IT_PETARMOR:
 						rate_adjust = is_mvp ? battle_config.item_rate_equip_mvp : (is_boss ? battle_config.item_rate_equip_boss : battle_config.item_rate_equip);
 						ratemin = battle_config.item_drop_equip_min;
 						ratemax = battle_config.item_drop_equip_max;
+						if (mob->dropitem[j].randomopt_group > 0)
+						rate_adjust = 100;
 						break;
 					case IT_CARD:
 						rate_adjust = is_mvp ? battle_config.item_rate_card_mvp : (is_boss ? battle_config.item_rate_card_boss : battle_config.item_rate_card);
